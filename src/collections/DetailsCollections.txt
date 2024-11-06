@@ -1,0 +1,43 @@
+In kotlin we have collections. They are:
+- Iterator
+- List
+- Set
+- Map (it doesn't inherit from Collection. It's not officially a collection)
+
+A way to group elements together
+Zero or more elements
+Same type
+
+Iterable means go one by one from each element in a collection
+
+From the types of collection above I can have the mutable class of each one
+- MutableIterable
+- MutableList
+- MutableSet
+- MutableMap
+
+-----------------------------------------
+
+* List
+Ordered collection
+Elements can be accessed by the position (index)
+Can contain duplicate elements
+It has a specific type
+[1,2,3,45,6,2,6,7,1,4,3]
+
+* Set
+Group of unique elements
+The order has no significance
+We can go through the elements one by one (iterate over them), but the order is not defined
+[1,2,3,45,6,7,4]
+
+* Map
+A set of key-value pairs
+Keys are unique (set)
+Each key maps to exactly one value
+Values can be duplicate
+{1 = one, 3 = three, 5 = five}
+
+* Iterator
+An iterator is an object that loops through elements of a collection
+Useful when applying the same operation to all elements

@@ -1,0 +1,8 @@
+Naming convention
+- Package names are separated by dots
+- Names are always lower case, with no underscores
+- Leftmost name is the highest level package
+- Rightmost name is the lowest level package
+
+Example:
+package com.organisation.project.configuration
