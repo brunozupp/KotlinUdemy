@@ -1,0 +1,27 @@
+Sealed Class vs Sealed Interface
+
+Both are features that allow the creation of restricted class hierarchies. Both of these constructs are used to define a
+finite set of possible subtypes, and prevent additional subtypes from being defined outside the declared hierarchy.
+
+Sealed Class:
+A sealed class is a class that can be subclassed, but only inside the same file where it is declared. This means that
+a sealed class cannot be directly instantiated and cannot have any other subclasses outside the file it is declared. It
+is commonly used to represent a restricted hierarchy of classes.
+- Sealed classes can have constructors with parameters, while sealed interfaces cannot.
+- Sealed classes can have abstract methods and properties, while sealed interfaces can only have abstract methods.
+- Sealed classes can be extended by classes, objects, and other sealed classes, while sealed interfaces can only be
+implemented by classes and objects.
+- Sealed classes are often used in conjunction with when expressions to provide exhaustive pattern matching.
+
+Sealed Interface:
+A sealed interface is similar to a sealed class, but it is used to represent a restricted set of interfaces rather than
+classes. Like sealed classes, sealed interfaces restrict the set of possible subtypes to a finite set that is defined
+within the same file as the sealed interface.
+- Sealed interfaces cannot have constructors with parameters, but they can have properties.
+- Sealed interfaces can only have abstract methods, but they can also have default implementations for those methods.
+- Sealed interfaces can be implemented by classes and objects, but not extended by other interfaces or sealed interfaces.
+- Sealed interfaces are often used as a way to define a set of related functionality that can be implemented by different
+classes.
+
+Resources:
+- https://medium.com/@manuchekhrdev/sealed-class-vs-sealed-interface-in-kotlin-47222335040a
