@@ -1,0 +1,38 @@
+In Kotlin, the 'by' keyword has two uses:
+- Delegated Properties
+- Interface/Class Delegation
+
+Let's start talking about the Delegate Properties one:
+In simple words, you can understand 'by' keyword as
+Provided By.
+From the perspective of property consumer, val is something
+that has getter (get) and var is something that has getter
+and setter (get and set). For each var property there is a
+default provider of get and set methods that we don't need
+to specify explicitly.
+But, when using 'by' keyword, you are stating that this
+getter/getter & setter is provided elsewhere (i.e it's been
+delegated). It's provided by the function that comes after 'by'.
+So, instead of using this built-in get and set methods, you
+are delegating that job to some explicit function.
+One very common example is the 'by lazy' for lazy loading
+properties. Also, if you are using dependency injection
+library like Koin, you'll see many properties defined like
+this:
+var myRepository: MyRepository by inject()  //inject is a function from Koin
+
+Now, let's talk about Class/Interface Delegation:
+In the class definition, it follows the same principle, it
+defines where some function is provided, but it can refer
+to any set of methods/properties, not just get and set.
+As in the example below:
+class MyClass: SomeInterface by SomeImplementation, SomeOtherInterface
+
+This code is saying: "I'm class MyClass and I offer functions
+of interface SomeInterface which are provided by SomeImplementation.
+I'll implement SomeOtherInterface by myself (that's implicit,
+so no 'by' there)".
+
+Resources:
+- https://stackoverflow.com/questions/38250022/what-does-by-keyword-do-in-kotlin
+- https://medium.com/mobile-app-development-publication/kotlin-by-made-simple-c6c08c1c16c4
