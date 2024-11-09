@@ -1,0 +1,14 @@
+It's the ability to run two or more process in the same time (parallel)
+
+Benefits:
+- responsiveness (my UI will not freeze)
+- faster execution (I don't need to wait the previous task to be executed to execute a second one - if they are not
+depended on each other)
+- parallelisation (better CPU utilisation)
+- resource efficiency
+
+Drawbacks:
+- synchronization (to synchronize two or more ending executions)
+- error handling
+
+The solution Coroutine comes with the proposal to solve the drawbacks listed above.
