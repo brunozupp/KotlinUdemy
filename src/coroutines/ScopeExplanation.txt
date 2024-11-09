@@ -1,0 +1,11 @@
+Scope provides lifecycle methods for coroutines. It allows us to start and stop coroutines.
+
+- GlobalScope.launch { }: the scope of the coroutine is the lifecycle of the entire application. It's usually not used.
+- runBlocking: creates a scope and runs a coroutine in a blocking way. It's not very used, because when I use this it will
+stop the execution of a code and run my coroutine. If I have just one thing to do in my application and just one thing
+I can use this
+- coroutineScope { }: creates a new scope. Does not complete until all children coroutines complete. Inside this scope,
+I have my coroutine and I can create others coroutine. And in this case, my first coroutine will only be completed when
+all the others finished their executions.
+
+Inside the scopes above I can call the method 'launch' to start a new coroutine
