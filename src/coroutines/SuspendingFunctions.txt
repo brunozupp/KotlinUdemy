@@ -1,0 +1,5 @@
+It's a function that can be run inside a coroutine
+Make callbacks seamless
+I use the keyword 'suspend' to mark my function as a suspending function:
+
+suspend fun sayHello() { }
