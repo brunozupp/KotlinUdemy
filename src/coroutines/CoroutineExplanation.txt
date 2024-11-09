@@ -1,0 +1,25 @@
+- Threads are resource intensive (it's expensive to start, stop, and coordinate between threads)
+
+- Coroutines are lightweight threads (I can start a big amount of coroutines that it will have no problem in memory)
+    It uses thread pools (it's a bunch of threads that I can use whenever I want)
+
+- I have a small unity of execution (coroutine) that I assign to a thread and when this coroutine is finished this thread
+is put back to the thread pool to be ready to be used by another coroutine when requested.
+
+- Simplify async code, callbacks and synchronisation
+
+- Simple syntax
+
+- It can be paused and resumed at any time, on a number of threads (a coroutine is not bound to a thread, it means that
+the thread is just where I will execute my coroutine, but the coroutine itself can be stopped and restarted anytime I want)
+
+-----------------------------------------------------------
+
+Basic concepts:
+- Scope: create and run coroutines, provides lifecycle events
+- Context: the Scope provides a context in which the coroutine runs
+- Suspending functions: functions that can be run in a coroutine (can be suspended)
+- Jobs: a handle on a coroutine (I can use it to cancel my execution)
+- Deferred: a future result of a coroutine (maybe it's the same behavior of the Future API in Dart?)
+- Dispatcher: manages which thread(s) the coroutine runs on
+- Error handling
