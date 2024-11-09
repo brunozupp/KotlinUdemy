@@ -1,0 +1,17 @@
+In the context of coroutine, a job is basically a handle on that coroutine.
+
+- A .launch() call returns a Job
+- Allows us to manipulate the coroutine lifecycle
+- Live in the hierarchy of other Jobs (both parents or children)
+
+Job {
+    Job { }
+    Job {
+        Job { }
+    }
+}
+
+- Can access lifecycle variables and methods
+    - cancel()
+    - join()
+IMPORTANT: if a job is cancelled, all its parents and children will be cancelled too.
