@@ -1,0 +1,20 @@
+Async is basically another way to start a coroutine
+It's just like launch, except it returns a result in the form of a Deferred
+    (A Future in Dart and a Promise in JS)
+Deferred - a future promise of a returned value
+
+When we need the value, we call await() (blocking call)
+    if the value is available, it will return immediately
+    if the value is not available, it will pause the thread until it is
+
+-----------------------------------------------------------
+
+suspend fun getRandom() = Random.nextInt(1000)
+
+val valueDeferred = GlobalScope.async {
+    getRandom()
+}
+
+val finalValue = valueDeferred.await()
+
+-----------------------------------------------------------
