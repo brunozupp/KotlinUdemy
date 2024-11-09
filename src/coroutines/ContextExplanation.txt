@@ -1,0 +1,15 @@
+Context and Scope are very similar in concept, but they are used in different ways
+
+A context is a set of data related to the coroutine (is a set of variables that you can access inside the coroutine)
+
+All coroutines have an associated context (when a scope creates a coroutine it automatically provides de context for
+that coroutine)
+
+-----------------------------
+Scope is used to create and manage coroutines
+Context is just the set of variables related to that coroutine
+-----------------------------
+
+Important elements of a context
+- Dispatcher: which thread the coroutine is run on
+- Job: handle on the coroutine lifecycle
