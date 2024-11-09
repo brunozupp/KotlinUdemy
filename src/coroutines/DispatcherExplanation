@@ -1,0 +1,19 @@
+A dispatcher determines which thread or thread pool the coroutine runs on.
+Different dispatchers are available depending on the task specificity.
+
+launch(Dispatchers.Default) { }
+
+Common dispatchers:
+- Main
+    Main thread update in UI driven applications (e.g. Android)
+    Main dispatcher needs to be defined in Gradle (on Android this is automatic)
+- Default
+    Useful for CPU intensive work (data process, image process, etc)
+- IO
+    Useful for network communication or reading/writing files
+- Unconfined
+    Starts the coroutine in the inherited dispatcher that called it (If I have a coroutine running in the Main dispatcher
+    and I create another inside this coroutine with Dispatcher.Unconfined, this new one will be in the Main dispatcher).
+    And it has one particularity that is when the coroutine is paused/resumed it will switch threads.
+- newSingleThreadContext("MyThread")
+    Forces creation of a new thread (this is not recommended, because it will create a new thread and threads are expensive)
