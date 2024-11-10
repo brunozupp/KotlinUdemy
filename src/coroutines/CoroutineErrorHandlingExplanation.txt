@@ -1,0 +1,53 @@
+Exception behavior depends on the coroutine builder
+    - launch (returns a Job)
+    - async (returns a Deferred)
+
+launch
+    - Propagates through the parent-child hierarchy
+    - The exception will be thrown immediately and jobs will fail
+    - Use try-catch or an exception handler
+    - IMPORTANT: I will not see the exception straight way, because I will just see the exception when I try to access the
+                 job/coroutine in my main thread
+
+async
+    - Exceptions are deferred until the result is consumed
+    - If the result is not consumed, the exception is never thrown
+    - try-catch in the coroutine or in the await() call
+
+
+Example of these using launch builder:
+
+val myErrorHandler = CoroutineExceptionHandler { coroutineContext, throwable ->
+    // handle exception
+}
+
+val job = launch(myErrorHandler) {
+    // do some task here
+
+    throw IndexOutOfBoundException()
+}
+
+job.join()
+
+// If I need to specify the dispatcher I have to use the + operator to assign the error handler
+launch(Dispatchers.Default + myHandler) {
+    // do some task here
+
+    throw IndexOutOfBoundException()
+}
+
+-----------------------------------------------------------
+
+Example of these using launch async:
+
+val deferred = GlobalScope.async {
+    // do some tasks here
+
+    throw Exception("Error")
+}
+
+try {
+    deferred.await()
+} catch(e: Exception) {
+    // some treatment here
+}
