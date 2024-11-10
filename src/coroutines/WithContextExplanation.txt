@@ -1,0 +1,14 @@
+Allow us to easily change context
+Easily switch between dispatchers
+Very lightweight
+
+launch(Dispatchers.Default) {
+
+    // default context
+
+    withContext(Dispatchers.IO) {
+        // IO context
+    }
+
+    // back to default context
+}
